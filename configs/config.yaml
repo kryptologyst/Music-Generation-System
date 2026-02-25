@@ -1,0 +1,49 @@
+# Model Configuration
+model:
+  name: "transformer"  # "lstm" or "transformer"
+  vocab_size: 128
+  d_model: 512
+  n_heads: 8
+  n_layers: 6
+  dropout: 0.1
+  max_length: 1024
+
+# Training Configuration
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 100
+  warmup_steps: 1000
+  weight_decay: 0.01
+  gradient_clip_norm: 1.0
+  save_every: 10
+  eval_every: 5
+
+# Data Configuration
+data:
+  sequence_length: 100
+  overlap: 50
+  min_note_duration: 0.125  # quarter note
+  max_note_duration: 4.0    # whole note
+  tempo_range: [60, 180]
+  key_range: 12  # all keys
+
+# Generation Configuration
+generation:
+  temperature: 0.8
+  top_k: 50
+  top_p: 0.9
+  max_length: 500
+  seed_length: 100
+  repetition_penalty: 1.1
+
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - "pitch_accuracy"
+    - "rhythm_accuracy"
+    - "harmonic_coherence"
+    - "melodic_continuity"
+    - "style_consistency"
+  test_split: 0.2
+  val_split: 0.1
